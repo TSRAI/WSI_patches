@@ -3,6 +3,5 @@ Patch extraction methods for Whole Slide Images (WSIs).
 
 ## First Method
 
-Using openslide to extract tissue patches from a Whole Slide Image without any preprocessing. This method
-will 
+A simple script using openslide-python to extract tissue patches from a Whole Slide Image.
 
