@@ -3,8 +3,9 @@ A patch extraction method for Whole Slide Images (WSIs). This method will create
 
 An example tissue patch (256 x 256 pixels) at the highest magnifaction (level 0) is presented below: 
 
-<center><img src= "images/86844-113664-34560.png">
-
+<p align="center">
+  <img src= "images/86844-113664-34560.png">
+</p>
 The filename contains patch ID (number), and location within the highest magnification:
 
 ~~~
