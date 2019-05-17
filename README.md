@@ -1,7 +1,9 @@
 # WSI_patches
-A patch extraction method for Whole Slide Images (WSIs). This method will create patches without using predefined annotations. Otsu Thresholding and binary dilation is used to determine whether a patch contains sufficient tissue. As a result, this method will allow you save patches with or without tissue. An example tissue patch (256 x 256 pixels) at the highest magnifaction at level 0 is presented below: 
+A patch extraction method for Whole Slide Images (WSIs). This method will create patches without using predefined annotations. Otsu Thresholding and binary dilation is used to determine whether a patch contains sufficient tissue. As a result, this method will allow you save patches with or without tissue. 
 
-<p style="text-align:center;"><img src= "images/86844-113664-34560.png">
+An example tissue patch (256 x 256 pixels) at the highest magnifaction (level 0) is presented below: 
+
+<center><img src= "images/86844-113664-34560.png">
 
 The filename contains patch ID (number), and location within the highest magnification:
 
