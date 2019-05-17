@@ -7,7 +7,7 @@ Before you get started, a requirments.txt file has been provided so you can inst
 pip install -r requirements.txt
 ~~~
 
-## First Method: Extract all patches
+## First method: extract all patches
 
 This script uses openslide-python to extract tissue patches from a Whole Slide Image (WSI). A WSI is tiled up and every patch from a predefined magnification level are extracted and saved into the output directory. Each patch will be labelled with a 
 
