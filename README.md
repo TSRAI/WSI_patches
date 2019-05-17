@@ -1,5 +1,5 @@
 # WSI_patches
-Patch extraction methods for Whole Slide Images (WSIs). 
+A patch extraction method for whole slide images (WSIs). This method will create patches with no predefined annotations and can be used for methods using "weakly-labelled" images. 
 
 ## Requirements
 Before you get started, a requirments.txt file has been provided so you can install all the relevant dependencies for these extraction methods. Simply type the following command in your terminal:
