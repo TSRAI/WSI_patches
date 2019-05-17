@@ -7,9 +7,11 @@ Centre for Vision, Speech and Signal Processing, University of Surrey, Guildford
 """
 
 import os, sys
-import shutil
 import openslide
+import numpy as np
+from scipy.ndimage.morphology import binary_dilation
 import argparse
+import cv2
 
 def main():
     parser = argparse.ArgumentParser()
@@ -19,8 +21,17 @@ def main():
                        help='The magnification of the whole slide image, the highest magnification is level 0')
     parser.add_argument('--patchsize', type=int, default= 256,
                        help='The size of the extracted patch, the default is 256 x 256 pixels')
+    parser.add_argument('--tissue_only', type=str, default= 'True',
+                       help='True or False depending on whether you want to extract patches with tissue only')
 
     args = parser.parse_args()
+    if args.tissue_only == 'True':
+        args.tissue_only = True
+    elif args.tissue_only == 'False':
+        args.tissue_only = False
+    else:
+        raise Exception('Incorrect value for args.tissue_only.  Value of {} given'.format(args.tissue_only))
+
     patch_extractor(args)
 
 
@@ -76,9 +87,19 @@ def patch_extractor(args):
                 for j in range(int(width/args.patchsize)):
                     patch = wsi.read_region(location=(j*args.patchsize,i*args.patchsize), level=args.level,
                                             size=(args.patchsize, args.patchsize)).convert('RGB')
-                    patch.save(outputdir + "/%s-%s-%s.png"% (idx, j*args.patchsize, i*args.patchsize))
+                    if args.tissue_only == True:
+                        numpy_array = np.array(patch)[:,:,:3]
+                        gray = cv2.cvtColor(numpy_array, cv2.COLOR_BGR2GRAY)
+                        ret, thresh = cv2.threshold(gray,0,255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+                        thresh = binary_dilation(thresh, iterations=15)
+                        ratio = np.mean(thresh)
+                        if ret < 200 and ratio > 0.8:
+                            patch.save(outputdir + "/%s-%s-%s.png"% (idx, j*args.patchsize, i*args.patchsize))
+                    else:
+                        patch.save(outputdir + "/%s-%s-%s.png"% (idx, j*args.patchsize, i*args.patchsize))
+
                     idx += 1
-            print("PATCH EXTRACTION COMPLETE FOR SLIDE %s"% (file))
+            print("PATCH EXTRACTION COMPLETE FOR SLIDE %s" % (file))
 
 if __name__ == '__main__':
     main()
