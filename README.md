@@ -1,5 +1,5 @@
 # WSI_patches
-A patch extraction method for Whole Slide Images (WSIs). This method will create patches with no predefined annotations and can be used for methods using "weakly-labelled" images. 
+A patch extraction method for Whole Slide Images (WSIs). This method will create patches without using predefined annotations. By using Otsu Thresholding and 
 
 ## Requirements
 Before you get started, a requirments.txt file has been provided so you can install all the relevant dependencies for these extraction methods. Navigate to the directory contaning this file and type the following command in your terminal to install these packages:
@@ -14,7 +14,6 @@ We will use openslide-python to extract tissue patches from a Whole Slide Image 
 To execute the patch extraction you must predefine the location of the directory containing the WSIs. You also have the option to either save patches that contain tissue only (True) or save every patch from the whole slide image (False). 
 
 Type in the following commands in the command line:
-
 ~~~
 python patch_extractor.py --slide_dir = WSI --tissue_only True
 ~~~
