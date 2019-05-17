@@ -16,10 +16,10 @@ To execute the patch extraction you must predefine the location of the directory
 Run the script in the command line as:
 
 ~~~
-python patch_extractor.py --slide_dir = "WSI/slide.npdi" 
+python patch_extractor.py --slide_dir = WSI --tissue_only True
 ~~~
 
 Optional arguments also include the magnification level (default at the highest "0") and the desired size of the patch (256 x 256 pixels):
 ~~~
-python patch_extractor.py --slide_dir = "WSI/slide.npdi" --level=0 --patchsize=256
+python patch_extractor.py --slide_dir = WSI --tissue_only True --level=0 --patchsize=256
 ~~~
