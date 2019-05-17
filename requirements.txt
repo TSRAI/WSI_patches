@@ -1,2 +1,5 @@
 openslide-python==1.1.0
-argparse
+argparse==1.1
+numpy==1.10.2
+scipy==1.2.1
+opencv-python 
