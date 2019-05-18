@@ -29,7 +29,7 @@ Type in the following commands in the command line:
 python patch_extractor.py --slide_dir = WSI --tissue_only True
 ~~~
 
-Optional arguments also include specifying the magnification level (default at the highest, "0") and specifying the desired size of the patch (256 x 256 pixels):
+Optional arguments include specifying the magnification level (default at the highest, "0") and specifying the desired size of the patch (256 x 256 pixels):
 ~~~
 python patch_extractor.py --slide_dir = WSI --tissue_only True --level 0 --patchsize 256
 ~~~
