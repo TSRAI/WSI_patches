@@ -6,10 +6,10 @@ An example tissue patch (256 x 256 pixels) at the highest magnifaction (level 0)
 <p align="center">
   <img src= "images/86844-113664-34560.png">
 </p>
-The filename contains patch ID (number), and location within the highest magnification:
+The patch filename contains the patch ID (number), and location within the highest magnification:
 
 ~~~
-86844-113664-360.png
+e.g. 86844-113664-360.png
 ~~~
 
 ## Requirements
