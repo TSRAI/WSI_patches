@@ -73,8 +73,10 @@ def patch_extractor(args):
     for root, dirnames, filenames in os.walk(args.slide_dir):
         for file in filenames:
             slide = os.path.join(root,file)
+            slide_name = os.path.basename(slide)
+            slide_name = slide_name.rstrip(".ndpi")
             wsi = open_slide(slide)
-            width, height = wsi.dimensions #dimensions A (width, height) tuple for level 0 of the slide.
+            width, height = wsi.level_dimensions[args.level] #dimensions A (width, height) tuple for level [k] of the slide.
             print("The dimensions of the whole slide image is width: ", width, " and height: ", height)
 
             outputdir = ("output/%s" % (file))
@@ -94,9 +96,9 @@ def patch_extractor(args):
                         thresh = binary_dilation(thresh, iterations=15)
                         ratio = np.mean(thresh)
                         if ret < 200 and ratio > 0.8:
-                            patch.save(outputdir + "/%s-%s-%s.png"% (idx, j*args.patchsize, i*args.patchsize))
+                            patch.save(outputdir + "/%s-%s-%s-%s.png"% (slide_name, idx, j*args.patchsize, i*args.patchsize))
                     else:
-                        patch.save(outputdir + "/%s-%s-%s.png"% (idx, j*args.patchsize, i*args.patchsize))
+                        patch.save(outputdir + "/%s-%s-%s-%s.png"% (slide_name, idx, j*args.patchsize, i*args.patchsize))
 
                     idx += 1
             print("PATCH EXTRACTION COMPLETE FOR SLIDE %s" % (file))
