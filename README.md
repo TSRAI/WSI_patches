@@ -24,6 +24,8 @@ We will use openslide-python to extract tissue patches from a Whole Slide Image 
 
 To execute the patch extraction you must predefine the location of the directory containing the WSIs. You also have the option to either save patches that contain tissue only (True) or save every patch from the whole slide image (False). 
 
+IT MUST BE DENOTATED THAT ANYTHING OVER LEVEL 0 CREATES OVERLAPPING PATCHES USING THIS METHOD DUE TO THE read_region OpenSlide FUNCTION THAT READS COORDINATES USING LEVEL 0.  
+
 Type in the following commands in the command line:
 ~~~
 python patch_extractor.py --slide_dir = WSI --tissue_only True
@@ -31,5 +33,5 @@ python patch_extractor.py --slide_dir = WSI --tissue_only True
 
 Optional arguments include specifying the magnification level (default at the highest, "0") and specifying the desired size of the patch (256 x 256 pixels):
 ~~~
-python patch_extractor.py --slide_dir = WSI --tissue_only True --level 0 --patchsize 256
+python patch_extractor.py --slide_dir  /WSI --tissue_only True --level 0 --patchsize 256
 ~~~
